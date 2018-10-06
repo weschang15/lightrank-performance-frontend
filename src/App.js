@@ -1,8 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Pusher from "pusher-js";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  componentDidMount = () => {
+    const pusher = new Pusher("428396da0516ba8fea1f", {
+      cluster: "us2",
+      forceTLS: true
+    });
+
+    const channel = pusher.subscribe("reports");
+    channel.bind("ReportUpdated", function(data) {
+      console.log(data);
+    });
+  };
+
   render() {
     return (
       <div className="App">
