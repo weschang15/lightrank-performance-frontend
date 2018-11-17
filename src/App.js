@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Query } from "react-apollo";
 import openSocket from "socket.io-client";
-import logo from "./logo.svg";
-import "./App.css";
+import { Routes } from "Components";
+import { gql } from "apollo-boost";
+import { UPDATE_AUTH } from "./graphql";
 
 class App extends Component {
   componentDidMount = () => {
@@ -14,24 +17,32 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Query query={GET_CURRENT_USER}>
+          {({ data: { currentUser }, loading, client, updateQuery }) => {
+            const isAuth = !!currentUser;
+            if (!loading && isAuth) {
+              updateQuery(() => {
+                client.mutate({
+                  mutation: UPDATE_AUTH,
+                  variables: { isAuth, userId: currentUser.id }
+                });
+              });
+            }
+            return <Routes isAuth={isAuth} isLoading={loading} />;
+          }}
+        </Query>
+      </BrowserRouter>
     );
   }
 }
+
+const GET_CURRENT_USER = gql`
+  query Me {
+    currentUser {
+      id
+    }
+  }
+`;
 
 export default App;
