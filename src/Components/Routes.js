@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Admin, Home, UserJoin } from "Pages";
+import { ProtectedRoute } from "Utilities";
 import Header from "./Header/Header";
 import PropTypes from "prop-types";
 
@@ -16,12 +17,18 @@ class Routes extends Component {
   };
 
   render() {
+    const { isAuth, isLoading } = this.props;
     return (
       <>
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/dashboard" component={Admin} />
+          <ProtectedRoute
+            path="/dashboard"
+            component={Admin}
+            isAuth={isAuth}
+            isLoading={isLoading}
+          />
           <Route path="/users/join" component={UserJoin} />
         </Switch>
       </>
