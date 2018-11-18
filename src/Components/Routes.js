@@ -21,7 +21,7 @@ class Routes extends Component {
     const { isAuth, isLoading } = this.props;
     return (
       <>
-        <Header />
+        {!isAuth && !isLoading && <Header />}
         <Switch>
           <Route exact path="/" component={Home} />
           <ProtectedRoute
