@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Admin, Home, UserJoin } from "Pages";
+import Header from "./Header/Header";
 import PropTypes from "prop-types";
 
 class Routes extends Component {
@@ -16,11 +17,14 @@ class Routes extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/dashboard" component={Admin} />
-        <Route path="/users/join" component={UserJoin} />
-      </Switch>
+      <>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/dashboard" component={Admin} />
+          <Route path="/users/join" component={UserJoin} />
+        </Switch>
+      </>
     );
   }
 }
