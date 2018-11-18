@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Admin, Home, UserJoin } from "Pages";
 import { ProtectedRoute } from "Utilities";
 import Header from "./Header/Header";
+import Logout from "./Users/Logout";
 import PropTypes from "prop-types";
 
 class Routes extends Component {
@@ -30,6 +31,7 @@ class Routes extends Component {
             isLoading={isLoading}
           />
           <Route path="/users/join" component={UserJoin} />
+          <Route path="/users/logout" component={Logout} />
         </Switch>
       </>
     );
