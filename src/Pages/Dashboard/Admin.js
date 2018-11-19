@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
-import { Dashboard, Sidebar } from "Components";
-import Projects from "./Projects";
+import { Dashboard, Sidebar, Projects } from "Components";
 
 class Admin extends Component {
   render() {
