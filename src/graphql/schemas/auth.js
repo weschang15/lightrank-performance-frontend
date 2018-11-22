@@ -6,10 +6,6 @@ export default gql`
     user: Int!
   }
 
-  type Query {
-    getAuth: Auth!
-  }
-
   type Mutation {
     updateAuth(isAuth: Boolean!, userId: ID!): Auth!
   }
