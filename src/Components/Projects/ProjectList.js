@@ -1,32 +1,40 @@
 import React, { Component } from "react";
-import { gql } from "apollo-boost";
-import { Query } from "react-apollo";
+import PropTypes from "prop-types";
+import ProjectListItem from "./ProjectListItem";
 
 class ProjectList extends Component {
-  render() {
-    return (
-      <Query query={GET_PROJECTS}>
-        {({ data: { getProjects }, loading }) => {
-          if (loading) {
-            return <h3>Loading...</h3>;
-          }
+  static propTypes = {
+    data: PropTypes.object.isRequired,
+    subscribeToMore: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired
+  };
 
-          return getProjects.map(project => (
-            <h3 key={project.id}>{project.name}</h3>
-          ));
-        }}
-      </Query>
-    );
+  static defaultProps = {
+    isLoading: false,
+    subscribeToMore: () => null
+  };
+
+  componentDidMount = () => {
+    const { subscribeToMore } = this.props;
+    subscribeToMore();
+  };
+
+  render() {
+    const {
+      data: { projects },
+      isLoading
+    } = this.props;
+
+    if (isLoading) {
+      return <h4>Loading...</h4>;
+    }
+
+    console.log(isLoading, projects);
+
+    return projects.map(project => (
+      <ProjectListItem key={project.id} project={project} />
+    ));
   }
 }
-
-const GET_PROJECTS = gql`
-  query GetProjects {
-    getProjects {
-      id
-      name
-    }
-  }
-`;
 
 export default ProjectList;
