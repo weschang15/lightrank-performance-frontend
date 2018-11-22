@@ -1,20 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Query } from "react-apollo";
-import io from "socket.io-client";
 import { Routes } from "Components";
 import { gql } from "apollo-boost";
 import { UPDATE_AUTH } from "./graphql";
 
-const socket = io("http://localhost:4000");
-
 class App extends Component {
-  componentDidMount = () => {
-    socket.on("ReportUpdated", report => {
-      console.log(report);
-    });
-  };
-
   render() {
     return (
       <BrowserRouter>
