@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { ThemeProvider } from "styled-components";
 import PropTypes from "prop-types";
-import { StackedForm, StandardInput } from "Elements";
+import { Button, StackedForm, StandardInput } from "Elements";
+import { primaryTheme } from "Utilities";
 
 class NewProjectForm extends Component {
   static propTypes = {
@@ -53,16 +55,18 @@ class NewProjectForm extends Component {
     const { handleSubmit, handleChange } = this;
     const { name } = this.state.form;
     return (
-      <StackedForm onSubmit={handleSubmit}>
-        <StandardInput
-          name="name"
-          type="text"
-          value={name}
-          placeholder="Project name"
-          onChange={handleChange}
-        />
-        <button>Create Project</button>
-      </StackedForm>
+      <ThemeProvider theme={primaryTheme}>
+        <StackedForm onSubmit={handleSubmit}>
+          <StandardInput
+            name="name"
+            type="text"
+            value={name}
+            placeholder="Project name"
+            onChange={handleChange}
+          />
+          <Button>Create Project</Button>
+        </StackedForm>
+      </ThemeProvider>
     );
   }
 }
