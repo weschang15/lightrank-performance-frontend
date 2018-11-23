@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { StackedForm, StandardInput } from "Elements";
 import PropTypes from "prop-types";
 
@@ -18,7 +19,8 @@ export default class NewUserForm extends Component {
       lastName: "",
       email: "",
       password: ""
-    }
+    },
+    redirect: false
   };
 
   fields = {
@@ -74,16 +76,16 @@ export default class NewUserForm extends Component {
     });
 
     const {
-      createUser: { ok, user, errors }
+      createUser: { ok, user }
     } = data;
-
-    console.log(errors);
 
     if (ok) {
       await onSuccess({
         isAuth: true,
         userId: user.id
       });
+
+      this.setState({ redirect: true });
     }
   };
 
@@ -105,7 +107,13 @@ export default class NewUserForm extends Component {
   };
 
   render() {
-    const { handleSubmit, createFields } = this;
+    const {
+      handleSubmit,
+      createFields,
+      state: { redirect }
+    } = this;
+    if (redirect) return <Redirect to="/dashboard" />;
+
     return (
       <StackedForm onSubmit={handleSubmit}>
         <h4>Register</h4>

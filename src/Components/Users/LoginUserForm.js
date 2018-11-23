@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { StackedForm, StandardInput } from "Elements";
 import PropTypes from "prop-types";
 
@@ -16,7 +17,8 @@ export default class LoginUserForm extends Component {
     form: {
       email: "",
       password: ""
-    }
+    },
+    redirect: false
   };
 
   handleChange = e => {
@@ -42,8 +44,6 @@ export default class LoginUserForm extends Component {
       refetchQueries: () => ["Me"]
     });
 
-    console.log(data);
-
     const {
       loginUser: { ok, user }
     } = data;
@@ -53,12 +53,22 @@ export default class LoginUserForm extends Component {
         isAuth: true,
         userId: user.id
       });
+
+      this.setState({ redirect: true });
     }
   };
 
   render() {
     const { handleSubmit } = this;
-    const { email, password } = this.state.form;
+    const {
+      form: { email, password },
+      redirect
+    } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/dashboard" />;
+    }
+
     return (
       <StackedForm onSubmit={handleSubmit}>
         <h4>Login</h4>
