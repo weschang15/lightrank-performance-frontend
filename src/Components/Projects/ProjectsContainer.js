@@ -4,7 +4,7 @@ import { Query } from "react-apollo";
 import ProjectList from "./ProjectList";
 
 class ProjectsContainer extends Component {
-  subscribe = (fn, user) => {
+  subscribe = (fn, user) => () =>
     fn({
       document: PROJECTS_SUBSCRIPTION,
       variables: {
@@ -21,7 +21,6 @@ class ProjectsContainer extends Component {
         return updatedQuery;
       }
     });
-  };
   render() {
     const { subscribe } = this;
     return (
@@ -29,13 +28,13 @@ class ProjectsContainer extends Component {
         {({ data: { auth }, loading: gettingUser }) => (
           <Query query={GET_PROJECTS}>
             {({ data, loading, subscribeToMore }) => {
-              if (gettingUser || loading) return null;
+              const isLoading = gettingUser || loading;
+              if (isLoading) return null;
               const { user } = auth;
               return (
                 <ProjectList
                   data={data}
-                  isLoading={loading}
-                  subscribeToMore={() => subscribe(subscribeToMore, user)}
+                  subscribeToMore={subscribe(subscribeToMore, user)}
                 />
               );
             }}
