@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ProjectListItem from "./ProjectListItem";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "Elements";
 
 class ProjectList extends Component {
   static propTypes = {
@@ -20,9 +21,23 @@ class ProjectList extends Component {
   render() {
     const { projects } = this.props.data;
 
-    return projects.map(project => (
+    const projectItems = projects.map(project => (
       <ProjectListItem key={project.id} project={project} />
     ));
+
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>#</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Avg. Scores</TableCell>
+            <TableCell />
+          </TableRow>
+        </TableHead>
+        <TableBody>{projectItems}</TableBody>
+      </Table>
+    );
   }
 }
 
