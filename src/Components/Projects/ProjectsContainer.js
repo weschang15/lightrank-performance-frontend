@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { gql } from "apollo-boost";
 import { Query } from "react-apollo";
+import styled from "styled-components";
+import { SectionContainer } from "Elements";
 import ProjectList from "./ProjectList";
 
 class ProjectsContainer extends Component {
@@ -32,10 +34,13 @@ class ProjectsContainer extends Component {
               if (isLoading) return null;
               const { user } = auth;
               return (
-                <ProjectList
-                  data={data}
-                  subscribeToMore={subscribe(subscribeToMore, user)}
-                />
+                <SectionContainer>
+                  <Header>Your Projects</Header>
+                  <ProjectList
+                    data={data}
+                    subscribeToMore={subscribe(subscribeToMore, user)}
+                  />
+                </SectionContainer>
               );
             }}
           </Query>
@@ -44,6 +49,13 @@ class ProjectsContainer extends Component {
     );
   }
 }
+
+const Header = styled.h3`
+  text-transform: uppercase;
+  color: #272838;
+  letter-spacing: 0.005em;
+  font-weight: 900;
+`;
 
 const PROJECTS_SUBSCRIPTION = gql`
   subscription ProjectsAdded($userId: Int!) {

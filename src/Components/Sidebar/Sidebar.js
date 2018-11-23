@@ -12,12 +12,39 @@ const Sidebar = () => {
 
 const SidebarContainer = styled.aside`
   background-color: #272838;
-  padding: 1em 1.5em;
   left: 0;
   position: fixed;
   top: 0;
   height: 100%;
   width: 250px;
+
+  li a {
+    padding: 0 1.5em;
+  }
+
+  li:hover {
+    a:not(.active) {
+      opacity: 1;
+    }
+  }
+
+  a:not(.active) {
+    opacity: 0.25;
+  }
+
+  .active {
+    position: relative
+    &:before {
+      width: 4px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #f8b202;
+      content: "";
+    }
+  }
 `;
 
 export default Sidebar;

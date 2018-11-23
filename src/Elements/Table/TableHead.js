@@ -9,7 +9,7 @@ const TableHead = styled.thead`
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #4a4a4a;
+    color: #7c7c7c;
   }
 `;
 

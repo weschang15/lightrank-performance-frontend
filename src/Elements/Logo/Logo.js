@@ -14,6 +14,7 @@ const Logo = () => {
 
 const LogoContainer = styled.div`
   margin-bottom: 2em;
+  padding: 1em 1.5em;
   svg {
     display: inline-block;
     vertical-align: middle;

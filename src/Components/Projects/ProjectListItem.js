@@ -1,7 +1,9 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 import { TableRow, TableCell } from "Elements";
 
-const ProjectListItem = ({ project }) => {
+const ProjectListItem = ({ project, match }) => {
+  const url = `${match.url}/${project.id}`;
   return (
     <TableRow>
       <TableCell>{project.id}</TableCell>
@@ -9,11 +11,11 @@ const ProjectListItem = ({ project }) => {
       <TableCell>74, 76, 82</TableCell>
       <TableCell>
         <span>
-          <span>View</span> <span>Delete</span>
+          <Link to={url}>View</Link> | <span>Delete</span>
         </span>
       </TableCell>
     </TableRow>
   );
 };
 
-export default ProjectListItem;
+export default withRouter(ProjectListItem);

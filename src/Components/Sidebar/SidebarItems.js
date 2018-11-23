@@ -10,7 +10,7 @@ const SidebarItems = ({ match }) => {
       <Menus>
         <List>
           <ListItem size="20px">
-            <NavLink to="/dashboard">
+            <NavLink exact to="/dashboard">
               <IconText
                 name="dashboard"
                 text="Dashboard"
@@ -40,7 +40,7 @@ const SidebarItems = ({ match }) => {
             </NavLink>
           </ListItem>
           <ListItem size="20px">
-            <NavLink to={`${match.url}/settings`}>
+            <NavLink exact to={`${match.url}/settings`}>
               <IconText name="cog" text="Settings" size="1em" color="#FBF5F3" />
             </NavLink>
           </ListItem>
