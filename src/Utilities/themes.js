@@ -1,13 +1,14 @@
 export const primaryTheme = {
   border: "#dee6f0",
+  borderRadius: "3px",
   button: {
     default: {
-      bg: "#40bd92",
-      color: "#174435"
+      bg: "#f8b200",
+      color: "#664900"
     },
     hover: {
-      bg: "#54c49d",
-      color: "#174435"
+      bg: "#fad26b",
+      color: "#664900"
     }
   }
 };
