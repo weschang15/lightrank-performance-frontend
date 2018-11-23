@@ -5,12 +5,10 @@ import ProjectListItem from "./ProjectListItem";
 class ProjectList extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
-    subscribeToMore: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired
+    subscribeToMore: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    isLoading: false,
     subscribeToMore: () => null
   };
 
@@ -20,14 +18,7 @@ class ProjectList extends Component {
   };
 
   render() {
-    const {
-      data: { projects },
-      isLoading
-    } = this.props;
-
-    if (isLoading) {
-      return <h4>Loading...</h4>;
-    }
+    const { projects } = this.props.data;
 
     return projects.map(project => (
       <ProjectListItem key={project.id} project={project} />
