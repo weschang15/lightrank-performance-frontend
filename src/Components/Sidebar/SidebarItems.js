@@ -66,7 +66,8 @@ const Menus = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - (2em + 40px));
+  padding-bottom: 1em;
+  height: calc(100% - (2em + 72px));
 `;
 
 export default withRouter(SidebarItems);

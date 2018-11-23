@@ -20,6 +20,7 @@ const SidebarContainer = styled.aside`
 
   li a {
     padding: 0 1.5em;
+    display: block;
   }
 
   li:hover {
