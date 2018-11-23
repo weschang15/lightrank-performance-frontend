@@ -29,8 +29,6 @@ class ProjectList extends Component {
       return <h4>Loading...</h4>;
     }
 
-    console.log(isLoading, projects);
-
     return projects.map(project => (
       <ProjectListItem key={project.id} project={project} />
     ));
