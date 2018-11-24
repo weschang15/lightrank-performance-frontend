@@ -76,6 +76,7 @@ const GET_REPORTS = gql`
     reports: getReports(projectId: $projectId) {
       id
       url
+      completed
     }
   }
 `;
