@@ -4,14 +4,14 @@ const TableRow = styled.tr`
   border-bottom: 1px solid #eee;
   &:hover {
     background: #fafafa;
-    td:last-of-type {
+    td.invisible:last-of-type {
       > span {
         visibility: visible;
       }
     }
   }
 
-  td:last-of-type {
+  td.invisible:last-of-type {
     > span {
       visibility: hidden;
       font-size: 14px;
