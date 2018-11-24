@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const Icon = ({ name, color, ...rest }) => {
+const Icon = ({ name, ...rest }) => {
   switch (name) {
     case "dashboard":
       return (
@@ -61,7 +61,20 @@ const Icon = ({ name, color, ...rest }) => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
         >
-          <path fillRule="evenodd" d="M4.16 4.16l1.42 1.42A6.99 6.99 0 0 0 10 18a7 7 0 0 0 4.42-12.42l1.42-1.42a9 9 0 1 1-11.69 0zM9 0h2v8H9V0z"/>
+          <path
+            fillRule="evenodd"
+            d="M4.16 4.16l1.42 1.42A6.99 6.99 0 0 0 10 18a7 7 0 0 0 4.42-12.42l1.42-1.42a9 9 0 1 1-11.69 0zM9 0h2v8H9V0z"
+          />
+        </Graphic>
+      );
+    case "checkmark":
+      return (
+        <Graphic
+          {...rest}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM6.7 9.29L9 11.6l4.3-4.3 1.4 1.42L9 14.4l-3.7-3.7 1.4-1.42z" />
         </Graphic>
       );
     case "logo":
