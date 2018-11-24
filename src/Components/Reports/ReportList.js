@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import ReportListItem from "./ReportListItem";
 import { Table, TableHead, TableBody, TableRow, TableCell } from "Elements";
 
@@ -32,7 +33,7 @@ class ReportList extends Component {
             <TableCell>#</TableCell>
             <TableCell>URL</TableCell>
             <TableCell>Scores</TableCell>
-            <TableCell>Status</TableCell>
+            <CenterCell>Status</CenterCell>
           </TableRow>
         </TableHead>
         <TableBody>{reportItems}</TableBody>
@@ -40,5 +41,9 @@ class ReportList extends Component {
     );
   }
 }
+
+const CenterCell = styled(TableCell)`
+  text-align: center;
+`;
 
 export default ReportList;

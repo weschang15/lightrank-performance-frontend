@@ -9,7 +9,7 @@ const ProjectListItem = ({ project, match }) => {
       <TableCell>{project.id}</TableCell>
       <TableCell>{project.name}</TableCell>
       <TableCell>74, 76, 82</TableCell>
-      <TableCell>
+      <TableCell className="invisible">
         <span>
           <Link to={url}>View</Link> | <span>Delete</span>
         </span>
