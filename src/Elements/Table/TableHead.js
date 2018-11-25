@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const TableHead = styled.thead`
   background-color: #f7f7f7;
-  tr:hover {
+  tr:hover:not(.no-hover) {
     background-color: inherit;
   }
   td {
