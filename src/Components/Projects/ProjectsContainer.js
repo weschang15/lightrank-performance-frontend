@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import { gql } from "apollo-boost";
 import { Query } from "react-apollo";
 import styled from "styled-components";
 import { SectionContainer } from "Elements";
+import {
+  GET_AUTH,
+  GET_PROJECTS,
+  PROJECT_ADDED_SUBSCRIPTION
+} from "../../graphql";
 import ProjectList from "./ProjectList";
 
 class ProjectsContainer extends Component {
   subscribe = (fn, user) => () =>
     fn({
-      document: PROJECTS_SUBSCRIPTION,
+      document: PROJECT_ADDED_SUBSCRIPTION,
       variables: {
         userId: user
       },
@@ -55,32 +59,6 @@ const Header = styled.h3`
   color: #272838;
   letter-spacing: 0.005em;
   font-weight: 900;
-`;
-
-const PROJECTS_SUBSCRIPTION = gql`
-  subscription ProjectsAdded($userId: Int!) {
-    project: projectAdded(userId: $userId) {
-      id
-      name
-    }
-  }
-`;
-
-const GET_PROJECTS = gql`
-  query GetProjects {
-    projects: getProjects {
-      id
-      name
-    }
-  }
-`;
-
-const GET_AUTH = gql`
-  query GetAuth {
-    auth @client {
-      user
-    }
-  }
 `;
 
 export default ProjectsContainer;

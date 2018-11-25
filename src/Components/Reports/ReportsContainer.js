@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { gql } from "apollo-boost";
 import { Query } from "react-apollo";
 import styled from "styled-components";
 import { SectionContainer } from "Elements";
 import ReportList from "./ReportList";
+import { GET_REPORTS, REPORT_ADDED_SUBSCRIPTION } from "../../graphql";
 
 class ReportsContainer extends Component {
   subscribe = (fn, projectId) => () =>
     fn({
-      document: REPORT_SUBSCRIPTION,
+      document: REPORT_ADDED_SUBSCRIPTION,
       variables: {
         projectId
       },
@@ -60,25 +60,6 @@ const Header = styled.h3`
 
 const Container = styled(SectionContainer)`
   margin-top: 0;
-`;
-
-const REPORT_SUBSCRIPTION = gql`
-  subscription ReportAdded($projectId: Int!) {
-    report: reportAdded(projectId: $projectId) {
-      id
-      url
-    }
-  }
-`;
-
-const GET_REPORTS = gql`
-  query GetReports($projectId: Int!) {
-    reports: getReports(projectId: $projectId) {
-      id
-      url
-      completed
-    }
-  }
 `;
 
 export default withRouter(ReportsContainer);
