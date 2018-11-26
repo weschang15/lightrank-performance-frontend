@@ -23,7 +23,7 @@ class ReportList extends Component {
     const { reports } = this.props.data;
 
     const reportItems = reports.map(report => (
-      <ReportListItem key={report.id} report={report} />
+      <ReportListItem key={report.uuid} report={report} />
     ));
 
     return (
