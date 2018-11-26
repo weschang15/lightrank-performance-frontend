@@ -1,5 +1,7 @@
 export * from "./Containers/Containers";
 export { default as Button } from "./Buttons/Button";
+export { default as DangerButton } from "./Buttons/DangerButton";
+export { default as PrimaryButton } from "./Buttons/PrimaryButton";
 export { default as StackedForm } from "./Forms/StackedForm";
 export { default as StandardInput } from "./Inputs/StandardInput";
 export { default as Icon } from "./Icons/Icon";
@@ -7,6 +9,7 @@ export { default as IconText } from "./Icons/IconText";
 export { default as List } from "./Lists/List";
 export { default as ListItem } from "./Lists/ListItem";
 export { default as Logo } from "./Logo/Logo";
+export { default as Modal } from "./Modal/Modal";
 export { default as Table } from "./Table/Table";
 export { default as TableHead } from "./Table/TableHead";
 export { default as TableBody } from "./Table/TableBody";
