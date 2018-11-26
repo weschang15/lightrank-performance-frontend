@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Score = ({ score: { name, value } }) => {
   return (
-    <ScoreBar key={name} score={value}>
+    <ScoreBar score={value}>
       <ScoreBarInner title={name}>{value}</ScoreBarInner>
     </ScoreBar>
   );
