@@ -4,21 +4,23 @@ import { Icon, Spinner, TableRow, TableCell } from "Elements";
 import Score from "../Scores/Score";
 import ScoreWrapper from "../Scores/ScoreWrapper";
 
-const scores = scores => {
-  return scores.map(score => <Score key={score.name} score={score} />);
+const renderScores = (scores, uuid) => {
+  return scores.map(score => (
+    <Score key={`${uuid}${score.name}`} score={score} />
+  ));
 };
 
-const ReportListItem = ({ report }) => {
+const ReportListItem = ({ report: { id, url, uuid, scores, completed } }) => {
   return (
     <TableRow className="no-hover">
-      <TableCell>{report.id}</TableCell>
-      <TableCell>{report.url}</TableCell>
+      <TableCell>{id}</TableCell>
+      <TableCell>{url}</TableCell>
       <TableCell>
-        <ScoreWrapper>{scores(report.scores)}</ScoreWrapper>
+        <ScoreWrapper>{renderScores(scores, uuid)}</ScoreWrapper>
       </TableCell>
       <CenterCell>
         <span>
-          {report.completed ? (
+          {completed ? (
             <Icon name="checkmark" size="16px" color="#00f836" />
           ) : (
             <Spinner />
