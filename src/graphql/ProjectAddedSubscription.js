@@ -5,6 +5,11 @@ export default gql`
     project: projectAdded(userId: $userId) {
       id
       name
+      uuid
+      averages {
+        name
+        value
+      }
     }
   }
 `;

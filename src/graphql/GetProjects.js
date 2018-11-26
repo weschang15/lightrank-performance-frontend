@@ -5,6 +5,7 @@ export default gql`
     projects: getProjects {
       id
       name
+      uuid
       averages {
         name
         value

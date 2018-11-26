@@ -5,6 +5,12 @@ export default gql`
     report: reportAdded(projectId: $projectId) {
       id
       url
+      uuid
+      scores {
+        name
+        value
+      }
+      completed
     }
   }
 `;

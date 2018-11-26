@@ -5,6 +5,7 @@ export default gql`
     reports: getReports(projectId: $projectId) {
       id
       url
+      uuid
       scores {
         name
         value
