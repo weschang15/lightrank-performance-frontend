@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ThemeProvider } from "styled-components";
 import PropTypes from "prop-types";
-import { Button, StackedForm, StandardInput } from "Elements";
+import { PrimaryButton, StackedForm, StandardInput } from "Elements";
 import { primaryTheme } from "Utilities";
 
 class NewProjectForm extends Component {
@@ -64,7 +64,7 @@ class NewProjectForm extends Component {
             placeholder="Project name"
             onChange={handleChange}
           />
-          <Button>Create Project</Button>
+          <PrimaryButton>Create Project</PrimaryButton>
         </StackedForm>
       </ThemeProvider>
     );

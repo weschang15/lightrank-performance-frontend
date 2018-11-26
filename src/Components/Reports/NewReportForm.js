@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import PropTypes from "prop-types";
-import { Button, StackedForm, StandardInput } from "Elements";
+import { PrimaryButton, StackedForm, StandardInput } from "Elements";
 import { primaryTheme } from "Utilities";
 
 class NewReportForm extends Component {
@@ -71,7 +71,7 @@ class NewReportForm extends Component {
             placeholder="https://example.com"
             onChange={handleChange}
           />
-          <Button>Create Report</Button>
+          <PrimaryButton>Create Report</PrimaryButton>
         </StackedForm>
       </ThemeProvider>
     );
