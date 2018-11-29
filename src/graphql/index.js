@@ -15,6 +15,9 @@ export { default as CREATE_REPORT } from "./CreateReport";
 export {
   default as REPORT_ADDED_SUBSCRIPTION
 } from "./ReportAddedSubscription";
+export {
+  default as REPORT_UPDATED_SUBSCRIPTION
+} from "./ReportUpdatedSubscription";
 
 export { default as LOGOUT_USER } from "./LogoutUser";
 export { default as UPDATE_AUTH } from "./UpdateAuth";
