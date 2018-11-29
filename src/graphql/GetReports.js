@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export default gql`
-  query GetReports($projectId: Int!) {
+  query GetReports($projectId: ID!) {
     reports: getReports(projectId: $projectId) {
       id
       url

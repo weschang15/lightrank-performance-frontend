@@ -46,7 +46,7 @@ class NewReportForm extends Component {
     const { url } = this.state.form;
 
     const { data } = await onSubmit({
-      variables: { url: url.trim(), projectId: parseInt(id) }
+      variables: { url: url.trim(), projectId: id }
     });
 
     const {

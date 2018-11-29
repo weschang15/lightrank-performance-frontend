@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export default gql`
-  mutation CreateReport($url: String!, $projectId: Int!) {
+  mutation CreateReport($url: String!, $projectId: ID!) {
     createReport(url: $url, projectId: $projectId) {
       ok
       errors {

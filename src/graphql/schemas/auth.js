@@ -3,7 +3,7 @@ import { gql } from "apollo-boost";
 export default gql`
   type Auth {
     isAuth: Boolean!
-    user: Int!
+    user: ID!
   }
 
   type Mutation {

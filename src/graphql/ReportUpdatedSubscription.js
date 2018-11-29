@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export default gql`
-  subscription ReportUpdated($id: Int!, $projectId: Int!) {
+  subscription ReportUpdated($id: ID!, $projectId: ID!) {
     report: reportUpdated(id: $id, projectId: $projectId) {
       id
       url
