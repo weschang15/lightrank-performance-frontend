@@ -31,9 +31,10 @@ class ReportsContainer extends Component {
         params: { id }
       }
     } = this.props;
+    const projectId = parseInt(id);
 
     return (
-      <Query query={GET_REPORTS} variables={{ projectId: parseInt(id) }}>
+      <Query query={GET_REPORTS} variables={{ projectId }}>
         {({ data, loading, subscribeToMore }) => {
           if (loading) return null;
           return (
@@ -41,7 +42,8 @@ class ReportsContainer extends Component {
               <Header>Recent reports</Header>
               <ReportList
                 data={data}
-                subscribeToMore={subscribe(subscribeToMore, parseInt(id))}
+                projectId={projectId}
+                subscribeToMore={subscribe(subscribeToMore, projectId)}
               />
             </Container>
           );
