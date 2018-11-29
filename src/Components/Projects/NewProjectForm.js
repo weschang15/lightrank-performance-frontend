@@ -35,20 +35,12 @@ class NewProjectForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { onSubmit, onSuccess } = this.props;
+    const { onSubmit } = this.props;
     const { name } = this.state.form;
 
-    const { data } = await onSubmit({
-      variables: { name }
+    await onSubmit({
+      variables: { name: name.trim() }
     });
-
-    const {
-      createProject: { ok }
-    } = data;
-
-    if (ok) {
-      await onSuccess();
-    }
   };
 
   render() {
