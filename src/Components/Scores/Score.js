@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Score = ({ score: { name, value } }) => {
+  const percentage = value * 100;
   return (
     <ScoreBar score={value}>
-      <ScoreBarInner title={name}>{value}</ScoreBarInner>
+      <ScoreBarInner title={name}>{percentage.toFixed(0)}</ScoreBarInner>
     </ScoreBar>
   );
 };
