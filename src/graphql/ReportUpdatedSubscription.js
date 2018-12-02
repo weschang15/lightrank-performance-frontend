@@ -4,13 +4,14 @@ export default gql`
   subscription ReportUpdated($id: ID!, $projectId: ID!) {
     report: reportUpdated(id: $id, projectId: $projectId) {
       id
-      url
-      uuid
+      completed
       scores {
         name
         value
       }
-      completed
+      url
+      uuid
+      updated_at
     }
   }
 `;

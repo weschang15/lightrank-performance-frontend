@@ -46,6 +46,7 @@ class ReportList extends Component {
             <TableCell>#</TableCell>
             <TableCell>URL</TableCell>
             <TableCell>Scores</TableCell>
+            <TableCell>Last Updated</TableCell>
             <CenterCell>Status</CenterCell>
           </TableRow>
         </TableHead>

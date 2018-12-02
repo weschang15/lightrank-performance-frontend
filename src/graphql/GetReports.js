@@ -4,13 +4,14 @@ export default gql`
   query GetReports($projectId: ID!) {
     reports: getReports(projectId: $projectId) {
       id
-      url
-      uuid
+      completed
       scores {
         name
         value
       }
-      completed
+      url
+      uuid
+      updated_at
     }
   }
 `;

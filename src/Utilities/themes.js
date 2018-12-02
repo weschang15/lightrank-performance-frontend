@@ -24,10 +24,12 @@ export const primaryTheme = {
     primary: {
       default: {
         bg: "#f8b200",
+        border: "#e0a100",
         color: "#664900"
       },
       hover: {
         bg: "#fad26b",
+        border: "#f9c33a",
         color: "#664900"
       }
     },
