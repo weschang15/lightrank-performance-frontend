@@ -1,8 +1,8 @@
 import { gql } from "apollo-boost";
 
 export default gql`
-  mutation CreateProject($name: String!) {
-    createProject(name: $name) {
+  mutation CreateProject($input: ProjectInput!) {
+    createProject(input: $input) {
       ok
       errors {
         path
