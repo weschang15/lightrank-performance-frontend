@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { StackedForm, StandardInput } from "Elements";
+import { ThemeProvider } from "styled-components";
+import { PrimaryButton, StackedForm, StandardInput } from "Elements";
+import { primaryTheme } from "Utilities";
 import PropTypes from "prop-types";
 
 export default class NewUserForm extends Component {
@@ -115,11 +117,13 @@ export default class NewUserForm extends Component {
     if (redirect) return <Redirect to="/dashboard" />;
 
     return (
-      <StackedForm onSubmit={handleSubmit}>
-        <h4>Register</h4>
-        {createFields()}
-        <button>Submit</button>
-      </StackedForm>
+      <ThemeProvider theme={primaryTheme}>
+        <StackedForm onSubmit={handleSubmit}>
+          <h4>Register</h4>
+          {createFields()}
+          <PrimaryButton>Submit</PrimaryButton>
+        </StackedForm>
+      </ThemeProvider>
     );
   }
 }

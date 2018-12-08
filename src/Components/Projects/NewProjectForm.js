@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import PropTypes from "prop-types";
 import { PrimaryButton, StackedForm, StandardInput } from "Elements";
 import { primaryTheme } from "Utilities";
@@ -16,7 +16,8 @@ class NewProjectForm extends Component {
 
   state = {
     form: {
-      name: ""
+      name: "",
+      baseUrl: ""
     }
   };
 
@@ -36,19 +37,20 @@ class NewProjectForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { onSubmit } = this.props;
-    const { name } = this.state.form;
 
     await onSubmit({
-      variables: { name: name.trim() }
+      variables: {
+        input: this.state.form
+      }
     });
   };
 
   render() {
     const { handleSubmit, handleChange } = this;
-    const { name } = this.state.form;
+    const { base, name } = this.state.form;
     return (
       <ThemeProvider theme={primaryTheme}>
-        <StackedForm onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <StandardInput
             name="name"
             type="text"
@@ -56,11 +58,23 @@ class NewProjectForm extends Component {
             placeholder="Project name"
             onChange={handleChange}
           />
+          <StandardInput
+            name="baseUrl"
+            type="url"
+            value={base}
+            placeholder="Base url"
+            onChange={handleChange}
+          />
           <PrimaryButton>Create Project</PrimaryButton>
-        </StackedForm>
+        </Form>
       </ThemeProvider>
     );
   }
 }
+
+const Form = styled(StackedForm)`
+  max-width: 480px;
+  width: 100%;
+`;
 
 export default NewProjectForm;

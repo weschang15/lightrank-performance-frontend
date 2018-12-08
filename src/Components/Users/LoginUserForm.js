@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { StackedForm, StandardInput } from "Elements";
+import { ThemeProvider } from "styled-components";
+import { PrimaryButton, StackedForm, StandardInput } from "Elements";
+import { primaryTheme } from "Utilities";
 import PropTypes from "prop-types";
 
 export default class LoginUserForm extends Component {
@@ -70,26 +72,27 @@ export default class LoginUserForm extends Component {
     }
 
     return (
-      <StackedForm onSubmit={handleSubmit}>
-        <h4>Login</h4>
-        <StandardInput
-          type="email"
-          name="email"
-          value={email}
-          placeholder="Email"
-          autoComplete="username"
-          onChange={this.handleChange}
-        />
-        <StandardInput
-          type="password"
-          name="password"
-          value={password}
-          placeholder="Password"
-          autoComplete="current-password"
-          onChange={this.handleChange}
-        />
-        <button>Submit</button>
-      </StackedForm>
+      <ThemeProvider theme={primaryTheme}>
+        <StackedForm onSubmit={handleSubmit}>
+          <StandardInput
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Email"
+            autoComplete="username"
+            onChange={this.handleChange}
+          />
+          <StandardInput
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Password"
+            autoComplete="current-password"
+            onChange={this.handleChange}
+          />
+          <PrimaryButton>Submit</PrimaryButton>
+        </StackedForm>
+      </ThemeProvider>
     );
   }
 }
