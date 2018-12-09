@@ -39,10 +39,9 @@ export default class LoginUserForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { onSubmit, onSuccess } = this.props;
-    const { email, password } = this.state.form;
 
     const { data } = await onSubmit({
-      variables: { email, password },
+      variables: { input: this.state.form },
       refetchQueries: () => ["Me"]
     });
 

@@ -70,10 +70,9 @@ export default class NewUserForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { onSubmit, onSuccess } = this.props;
-    const { firstName, lastName, email, password } = this.state.form;
 
     const { data } = await onSubmit({
-      variables: { firstName, lastName, email, password },
+      variables: { input: this.state.form },
       refetchQueries: () => ["Me"]
     });
 

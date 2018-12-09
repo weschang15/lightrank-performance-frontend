@@ -1,7 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import { gql } from "apollo-boost";
-import { UPDATE_AUTH } from "../../graphql";
+import { LOGIN_USER, UPDATE_AUTH } from "../../graphql";
 import LoginUserForm from "./LoginUserForm";
 
 const Login = () => {
@@ -19,20 +18,5 @@ const Login = () => {
     </Mutation>
   );
 };
-
-const LOGIN_USER = gql`
-  mutation LoginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
-      ok
-      user {
-        id
-      }
-      errors {
-        path
-        message
-      }
-    }
-  }
-`;
 
 export default Login;

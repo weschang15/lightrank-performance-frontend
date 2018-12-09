@@ -15,7 +15,7 @@ class Logout extends Component {
 
   componentDidMount = async () => {
     const { client } = this.props;
-    await client.mutate({ mutation });
+    await client.mutate({ mutation, refetchQueries: () => ["Me"] });
     client.resetStore();
   };
 

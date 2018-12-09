@@ -1,9 +1,12 @@
 import { gql } from "apollo-boost";
 
 export default gql`
-  mutation CreateReport($input: ReportInput!) {
-    createReport(input: $input) {
+  mutation LoginUser($input: LoginUserInput!) {
+    loginUser(input: $input) {
       ok
+      user {
+        id
+      }
       errors {
         path
         message

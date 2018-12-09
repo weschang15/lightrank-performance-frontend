@@ -23,7 +23,7 @@ class NewReportForm extends Component {
   state = {
     form: {
       url: "",
-      repeat: 0
+      repeat: "0"
     }
   };
 
@@ -51,8 +51,10 @@ class NewReportForm extends Component {
     } = this.props;
 
     const { url, repeat } = this.state.form;
+    const input = { url, repeat: +repeat, projectId: id };
+
     const { data } = await onSubmit({
-      variables: { url: url.trim(), repeat: parseInt(repeat), projectId: id }
+      variables: { input }
     });
 
     const {
