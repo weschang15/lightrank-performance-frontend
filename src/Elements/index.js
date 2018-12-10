@@ -1,5 +1,6 @@
 export * from "./Containers/Containers";
 export { default as Button } from "./Buttons/Button";
+export { default as Checkbox } from "./Inputs/Checkbox";
 export { default as DangerButton } from "./Buttons/DangerButton";
 export { default as PrimaryButton } from "./Buttons/PrimaryButton";
 export { default as StackedForm } from "./Forms/StackedForm";
@@ -16,4 +17,4 @@ export { default as TableBody } from "./Table/TableBody";
 export { default as TableRow } from "./Table/TableRow";
 export { default as TableCell } from "./Table/TableCell";
 export { default as Spinner } from "./Spinners/Spinner";
-export { default as RadioInput } from "./Inputs/RadioInput";
+export { default as Radio } from "./Inputs/Radio";

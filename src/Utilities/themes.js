@@ -7,7 +7,14 @@ export const primaryTheme = {
     dark: "#6b6b73",
     light: "#c3c3c6",
     lighter: "#d2d2d4",
-    lightest: "#e0e0e2"
+    lightest: "#e0e0e2",
+    greenDarkest: "#00771a",
+    greenDarker: "#00a423",
+    greenDark: "#00c52b",
+    green: "#00f836",
+    greenLight: "#5ffa81",
+    greenLighter: "#8ffba7",
+    greenLightest: "#b2fcc2"
   },
   weights: {
     normal: 400,
