@@ -23,8 +23,8 @@ class NewReportForm extends Component {
 
   state = {
     form: {
-      url: "",
-      repeat: "0",
+      baseUrl: "",
+      repeatInterval: "0",
       categories: [
         "accessibility",
         "best-practices",
@@ -113,8 +113,13 @@ class NewReportForm extends Component {
       }
     } = this.props;
 
-    const { url, repeat, categories } = this.state.form;
-    const input = { url, repeat: +repeat, projectId: id, categories };
+    const { baseUrl, repeatInterval, categories } = this.state.form;
+    const input = {
+      baseUrl,
+      repeatInterval: +repeatInterval,
+      projectId: id,
+      categories
+    };
 
     const { data } = await onSubmit({
       variables: { input }
@@ -132,7 +137,7 @@ class NewReportForm extends Component {
   render() {
     const { handleSubmit, handleChange, handleSelectedCategories } = this;
     const { fields } = this.state;
-    const { url } = this.state.form;
+    const { baseUrl } = this.state.form;
 
     const checkboxes = Object.keys(fields).map(field => (
       <Checkbox
@@ -151,45 +156,45 @@ class NewReportForm extends Component {
       <ThemeProvider theme={primaryTheme}>
         <Form onSubmit={handleSubmit}>
           <StandardInput
-            name="url"
+            name="baseUrl"
             type="url"
-            value={url}
+            value={baseUrl}
             placeholder="https://example.com"
             onChange={handleChange}
           />
           <div>{checkboxes}</div>
           <div>
             <Radio
-              id="repeat-0"
-              htmlFor="repeat-0"
-              name="repeat"
+              id="repeatInterval-0"
+              htmlFor="repeatInterval-0"
+              name="repeatInterval"
               type="radio"
               value={0}
               label="No repeat"
               onChange={handleChange}
             />
             <Radio
-              id="repeat-15"
-              htmlFor="repeat-15"
-              name="repeat"
+              id="repeatInterval-15"
+              htmlFor="repeatInterval-15"
+              name="repeatInterval"
               type="radio"
               value={15}
               label="15 minutes"
               onChange={handleChange}
             />
             <Radio
-              id="repeat-30"
-              htmlFor="repeat-30"
-              name="repeat"
+              id="repeatInterval-30"
+              htmlFor="repeatInterval-30"
+              name="repeatInterval"
               type="radio"
               value={30}
               label="30 minutes"
               onChange={handleChange}
             />
             <Radio
-              id="repeat-60"
-              htmlFor="repeat-60"
-              name="repeat"
+              id="repeatInterval-60"
+              htmlFor="repeatInterval-60"
+              name="repeatInterval"
               type="radio"
               value={60}
               label="60 minutes"

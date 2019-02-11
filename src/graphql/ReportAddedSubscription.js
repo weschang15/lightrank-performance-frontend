@@ -9,7 +9,7 @@ export default gql`
         name
         value
       }
-      url
+      baseUrl
       uuid
       updated_at
     }

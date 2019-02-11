@@ -11,12 +11,12 @@ const renderScores = (scores, uuid) => {
 };
 
 const ReportListItem = ({
-  report: { id, url, uuid, scores, completed, updated_at }
+  report: { id, baseUrl, uuid, scores, completed, updated_at }
 }) => {
   return (
     <TableRow className="no-hover">
       <TableCell>{id}</TableCell>
-      <TableCell>{url}</TableCell>
+      <TableCell>{new URL(baseUrl).pathname}</TableCell>
       <TableCell>
         <ScoreWrapper>{renderScores(scores, uuid)}</ScoreWrapper>
       </TableCell>

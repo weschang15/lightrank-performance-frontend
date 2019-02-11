@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import PropTypes from "prop-types";
-import { PrimaryButton, StackedForm, StandardInput } from "Elements";
+import { PrimaryButton, Checkbox, StackedForm, StandardInput } from "Elements";
 import { primaryTheme } from "Utilities";
 
 class NewProjectForm extends Component {
@@ -17,7 +17,8 @@ class NewProjectForm extends Component {
   state = {
     form: {
       name: "",
-      baseUrl: ""
+      baseUrl: "",
+      enableCrawl: true
     }
   };
 
@@ -47,7 +48,7 @@ class NewProjectForm extends Component {
 
   render() {
     const { handleSubmit, handleChange } = this;
-    const { base, name } = this.state.form;
+    const { base, name, enableCrawl } = this.state.form;
     return (
       <ThemeProvider theme={primaryTheme}>
         <Form onSubmit={handleSubmit}>
@@ -64,6 +65,15 @@ class NewProjectForm extends Component {
             value={base}
             placeholder="Base url"
             onChange={handleChange}
+          />
+          <Checkbox
+            name="enableCrawl"
+            value={enableCrawl}
+            htmlFor="enableCrawl"
+            id="enableCrawl"
+            label="Crawl sub pages"
+            onChange={handleChange}
+            checked={enableCrawl}
           />
           <PrimaryButton>Create Project</PrimaryButton>
         </Form>
