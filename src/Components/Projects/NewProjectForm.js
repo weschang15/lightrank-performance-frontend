@@ -27,6 +27,8 @@ class NewProjectForm extends Component {
     const name = target.name;
     const val = target.type === "checkbox" ? target.checked : target.value;
 
+    console.log(target);
+
     this.setState(prevState => ({
       form: {
         ...prevState.form,
@@ -74,6 +76,7 @@ class NewProjectForm extends Component {
             label="Crawl sub pages"
             onChange={handleChange}
             checked={enableCrawl}
+            type="checkbox"
           />
           <PrimaryButton>Create Project</PrimaryButton>
         </Form>
