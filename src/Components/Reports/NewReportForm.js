@@ -149,6 +149,7 @@ class NewReportForm extends Component {
         label={fields[field].label}
         onChange={handleSelectedCategories}
         checked={fields[field].checked}
+        type="checkbox"
       />
     ));
 
