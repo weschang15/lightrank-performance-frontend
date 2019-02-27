@@ -3,6 +3,7 @@ export { default as typeDefs } from "./schemas";
 export { default as resolvers } from "./resolvers";
 
 export { default as GET_AUTH } from "./GetAuth";
+export { default as ADD_PROJECT_MEMBER } from "./AddProjectMember";
 export { default as CREATE_PROJECT } from "./CreateProject";
 export { default as DELETE_PROJECT } from "./DeleteProject";
 export { default as GET_PROJECTS } from "./GetProjects";

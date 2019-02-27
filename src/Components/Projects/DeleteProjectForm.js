@@ -86,7 +86,7 @@ class DeleteProjectForm extends Component {
               onChange={handleChange}
             />
           </div>
-          <DangerButton disabled={invalid}>Create Project</DangerButton>
+          <DangerButton disabled={invalid}>Delete Project</DangerButton>
         </StackedForm>
       </ThemeProvider>
     );
