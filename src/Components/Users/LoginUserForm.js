@@ -46,7 +46,7 @@ export default class LoginUserForm extends Component {
     });
 
     const {
-      loginUser: { ok, user }
+      loginUser: { ok, user, errors }
     } = data;
 
     if (ok) {
