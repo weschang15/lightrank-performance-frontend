@@ -10,6 +10,11 @@ export default gql`
         name
         value
       }
+      users {
+        firstName
+        lastName
+        email
+      }
     }
   }
 `;
