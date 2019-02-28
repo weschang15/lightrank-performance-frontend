@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
-import { Dashboard, Sidebar, Projects, Project } from "Components";
+import { AdminHeader, Dashboard, Sidebar, Projects, Project } from "Components";
 
 class Admin extends Component {
   render() {
@@ -9,6 +9,7 @@ class Admin extends Component {
     return (
       <AdminWrapper>
         <Sidebar />
+        <AdminHeader />
         <Route path={`${path}`} component={Dashboard} exact />
         <Route path={`${path}/projects`} component={Projects} exact />
         <Route path={`${path}/projects/:id`} component={Project} />
@@ -18,7 +19,7 @@ class Admin extends Component {
 }
 
 const AdminWrapper = styled.div`
-  padding-left: 250px;
+  padding-left: 235px;
 `;
 
 export default Admin;

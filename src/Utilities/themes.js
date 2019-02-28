@@ -1,5 +1,6 @@
 export const primaryTheme = {
   colors: {
+    pureWhite: "#fff",
     white: "#f7f7f7",
     black: "#161c21",
     darkest: "#272838",
