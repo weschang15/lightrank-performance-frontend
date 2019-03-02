@@ -1,6 +1,7 @@
 export * from "./Containers/Containers";
 export { default as Button } from "./Buttons/Button";
 export { default as CircleButton } from "./Buttons/CircleButton";
+export { default as CircleIcon } from "./Icons/CircleIcon";
 export { default as Checkbox } from "./Inputs/Checkbox";
 export { default as DangerButton } from "./Buttons/DangerButton";
 export { default as PrimaryButton } from "./Buttons/PrimaryButton";
