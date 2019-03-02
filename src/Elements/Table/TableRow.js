@@ -12,6 +12,7 @@ const TableRow = styled.tr`
   }
 
   td.invisible:last-of-type {
+    text-align: center;
     > span {
       visibility: hidden;
       font-size: 14px;

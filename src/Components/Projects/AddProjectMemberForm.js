@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { PrimaryButton, StackedForm, StandardInput } from "Elements";
 import { primaryTheme } from "Utilities";
 import PropTypes from "prop-types";
 
-export default class LoginUserForm extends Component {
+export default class AddProjectMemberForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
     onSuccess: PropTypes.func
@@ -18,9 +17,8 @@ export default class LoginUserForm extends Component {
   state = {
     form: {
       email: "",
-      password: ""
-    },
-    redirect: false
+      projectId: this.props.projectId
+    }
   };
 
   handleChange = e => {
@@ -38,37 +36,20 @@ export default class LoginUserForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { onSubmit, onSuccess } = this.props;
+    const { onSubmit } = this.props;
 
     const { data } = await onSubmit({
-      variables: { input: this.state.form },
-      refetchQueries: () => ["Me"]
+      variables: { input: this.state.form }
     });
 
-    const {
-      loginUser: { ok, user, errors }
-    } = data;
-
-    if (ok) {
-      await onSuccess({
-        isAuth: true,
-        userId: user.id
-      });
-
-      this.setState({ redirect: true });
-    }
+    console.log(data);
   };
 
   render() {
     const { handleSubmit } = this;
     const {
-      form: { email, password },
-      redirect
+      form: { email }
     } = this.state;
-
-    if (redirect) {
-      return <Redirect to="/dashboard" />;
-    }
 
     return (
       <ThemeProvider theme={primaryTheme}>
@@ -81,15 +62,7 @@ export default class LoginUserForm extends Component {
             autoComplete="username"
             onChange={this.handleChange}
           />
-          <StandardInput
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            autoComplete="current-password"
-            onChange={this.handleChange}
-          />
-          <PrimaryButton>Submit</PrimaryButton>
+          <PrimaryButton>Invite User</PrimaryButton>
         </StackedForm>
       </ThemeProvider>
     );

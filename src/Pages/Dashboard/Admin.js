@@ -18,7 +18,7 @@ class Admin extends Component {
 }
 
 const AdminWrapper = styled.div`
-  padding-left: 250px;
+  padding-left: 235px;
 `;
 
 export default Admin;

@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import { ThemeProvider } from "styled-components";
+import PropTypes from "prop-types";
+import styled, { ThemeProvider } from "styled-components";
 import { Portal, primaryTheme } from "Utilities";
 import Icon from "../Icons/Icon";
 
 export default class Modal extends Component {
+  static propTypes = {
+    on: PropTypes.bool.isRequired,
+    toggle: PropTypes.func.isRequired
+  };
+
   componentDidMount = () => {
     document.body.style.overflow = "hidden";
   };

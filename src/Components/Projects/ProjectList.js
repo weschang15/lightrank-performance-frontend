@@ -32,6 +32,7 @@ class ProjectList extends Component {
             <TableCell>#</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Avg. Scores</TableCell>
+            <TableCell>Users</TableCell>
             <TableCell />
           </TableRow>
         </TableHead>

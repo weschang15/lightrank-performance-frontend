@@ -74,6 +74,7 @@ class NewProjectForm extends Component {
             label="Crawl sub pages"
             onChange={handleChange}
             checked={enableCrawl}
+            type="checkbox"
           />
           <PrimaryButton>Create Project</PrimaryButton>
         </Form>
