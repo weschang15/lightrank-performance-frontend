@@ -16,7 +16,7 @@ import * as serviceWorker from "./serviceWorker";
 const cache = new InMemoryCache();
 
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:4000/graphql",
+  uri: `ws://${process.env.REACT_APP_API_ENDPOINT}/graphql`,
   options: {
     reconnect: true
   }
