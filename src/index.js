@@ -22,7 +22,9 @@ const wsLink = new WebSocketLink({
   }
 });
 
-const httpLink = new HttpLink();
+const httpLink = new HttpLink({
+  uri: `${process.env.REACT_APP_API_ENDPOINT}/graphql`
+});
 
 const stateLink = withClientState({ cache, defaults, resolvers, typeDefs });
 
