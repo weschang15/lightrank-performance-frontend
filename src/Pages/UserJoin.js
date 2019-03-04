@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { NewUser, Login } from "Components";
+import { Login } from "Components";
 import { Icon } from "Elements";
 import { primaryTheme } from "Utilities";
+const { REACT_APP_API_ENDPOINT } = process.env;
 
 export default class UserJoin extends Component {
   render() {
@@ -14,7 +15,9 @@ export default class UserJoin extends Component {
             <Login />
             <SubHeader>Or Join with Services</SubHeader>
             <OauthContainer>
-              <GoogleAuthButton href="/api/auth/google">
+              <GoogleAuthButton
+                href={`${REACT_APP_API_ENDPOINT}/api/auth/google`}
+              >
                 <Icon name="google" size="1.6em" />
                 <span>Login with Google</span>
               </GoogleAuthButton>
