@@ -1,3 +1,1 @@
-/api/*  https://api.lightrank.com/:splat  200
-/graphql  https://api.lightrank.com/:splat  200
-/*    /index.html   200
+/* /index.html 200
