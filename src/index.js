@@ -4,30 +4,28 @@ import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
 import { WebSocketLink } from "apollo-link-ws";
 import { HttpLink } from "apollo-link-http";
-import { split, from } from "apollo-link";
+import { split } from "apollo-link";
 import { getMainDefinition } from "apollo-utilities";
 import { InMemoryCache } from "apollo-boost";
-import { withClientState } from "apollo-link-state";
-import { defaults, resolvers, typeDefs } from "./graphql";
+import { resolvers, typeDefs } from "./graphql";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+const { REACT_APP_GQL_ENDPOINT, REACT_APP_GQLWS_ENDPOINT } = process.env;
 const cache = new InMemoryCache();
 
 const wsLink = new WebSocketLink({
-  uri: process.env.REACT_APP_GQLWS_ENDPOINT,
+  uri: REACT_APP_GQLWS_ENDPOINT,
   options: {
     reconnect: true
   }
 });
 
 const httpLink = new HttpLink({
-  uri: `${process.env.REACT_APP_API_ENDPOINT}/graphql`,
+  uri: REACT_APP_GQL_ENDPOINT,
   credentials: "include"
 });
-
-const stateLink = withClientState({ cache, defaults, resolvers, typeDefs });
 
 const link = split(
   ({ query }) => {
@@ -39,8 +37,20 @@ const link = split(
 );
 
 const client = new ApolloClient({
-  link: from([stateLink, link]),
-  cache
+  link,
+  cache,
+  resolvers,
+  typeDefs
+});
+
+cache.writeData({
+  data: {
+    auth: {
+      user: null,
+      isAuth: false,
+      __typename: "Auth"
+    }
+  }
 });
 
 render(
