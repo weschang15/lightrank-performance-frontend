@@ -11,7 +11,7 @@ const renderScores = (scores, uuid) => {
 };
 
 const ReportListItem = ({
-  report: { id, baseUrl, uuid, scores, completed, updated_at }
+  report: { id, baseUrl, uuid, scores, completed, updatedAt }
 }) => {
   return (
     <TableRow className="no-hover">
@@ -20,7 +20,7 @@ const ReportListItem = ({
       <TableCell>
         <ScoreWrapper>{renderScores(scores, uuid)}</ScoreWrapper>
       </TableCell>
-      <TableCell>{new Date(updated_at).toLocaleString()}</TableCell>
+      <TableCell>{new Date(updatedAt).toLocaleString()}</TableCell>
       <CenterCell>
         <span>
           {completed ? (

@@ -11,7 +11,7 @@ export default gql`
       }
       baseUrl
       uuid
-      updated_at
+      updatedAt
     }
   }
 `;
