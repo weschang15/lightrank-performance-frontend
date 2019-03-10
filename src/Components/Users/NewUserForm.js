@@ -93,16 +93,15 @@ export default class NewUserForm extends Component {
   createFields = () => {
     return Object.entries(this.fields).map(([name, config]) => {
       return (
-        <div key={name}>
-          <StandardInput
-            name={name}
-            type={config.type}
-            placeholder={config.label}
-            autoComplete={config.autocomplete ? config.autocomplete : "false"}
-            value={this.state.form[name]}
-            onChange={this.handleChange}
-          />
-        </div>
+        <StandardInput
+          key={name}
+          name={name}
+          type={config.type}
+          placeholder={config.label}
+          autoComplete={config.autocomplete ? config.autocomplete : "false"}
+          value={this.state.form[name]}
+          onChange={this.handleChange}
+        />
       );
     });
   };
@@ -118,7 +117,6 @@ export default class NewUserForm extends Component {
     return (
       <ThemeProvider theme={primaryTheme}>
         <StackedForm onSubmit={handleSubmit}>
-          <h4>Register</h4>
           {createFields()}
           <PrimaryButton>Submit</PrimaryButton>
         </StackedForm>
