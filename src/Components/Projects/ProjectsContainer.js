@@ -21,19 +21,39 @@ class ProjectsContainer extends Component {
         const newProject = subscriptionData.data.project;
         const updatedQuery = {
           ...prev,
-          projects: [...prev.projects, newProject]
+          projects: {
+            ...prev.projects,
+            rows: [...prev.projects.rows, newProject]
+          }
         };
 
         return updatedQuery;
       }
     });
+
+  loadMore = (fn, list) => () =>
+    fn({
+      variables: {
+        input: { after: list[list.length - 1].createdAt }
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return {
+          ...prev,
+          projects: {
+            ...fetchMoreResult.projects
+          }
+        };
+      }
+    });
+
   render() {
-    const { subscribe } = this;
+    const { subscribe, loadMore } = this;
     return (
       <Query query={GET_AUTH}>
         {({ data: { auth }, loading: gettingUser }) => (
-          <Query query={GET_PROJECTS}>
-            {({ data, loading, subscribeToMore }) => {
+          <Query query={GET_PROJECTS} variables={{ input: { after: null } }}>
+            {({ data, loading, fetchMore, subscribeToMore }) => {
               const isLoading = gettingUser || loading;
               if (isLoading) return null;
               const { user } = auth;
@@ -42,6 +62,7 @@ class ProjectsContainer extends Component {
                   <Header>Your Projects</Header>
                   <ProjectList
                     data={data}
+                    loadMore={loadMore(fetchMore, data.projects.rows)}
                     subscribeToMore={subscribe(subscribeToMore, user)}
                   />
                 </SectionContainer>

@@ -3,18 +3,14 @@ import { gql } from "apollo-boost";
 export default gql`
   subscription ProjectAdded($userId: ID!) {
     project: projectAdded(userId: $userId) {
+      createdAt
       id
       name
-      uuid
-      averages {
-        name
-        value
-      }
       users {
-        firstName
-        lastName
+        initials
         email
       }
+      uuid
     }
   }
 `;

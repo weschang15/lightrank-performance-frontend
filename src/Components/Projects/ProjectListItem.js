@@ -5,31 +5,20 @@ import { CircleButton, Icon, TableRow, TableCell } from "Elements";
 import { Toggle } from "Utilities";
 import AddProjectMember from "./AddProjectMember";
 import DeleteProject from "./DeleteProject";
-import Score from "../Scores/Score";
-import ScoreWrapper from "../Scores/ScoreWrapper";
 import UserIcon from "../Users/UserIcon";
-
-const projectAverages = (averages, uuid) => {
-  return averages.map(score => (
-    <Score key={`${uuid}${score.name}`} score={score} />
-  ));
-};
 
 const projectMembers = users => {
   return users.map(user => <UserIcon key={user.email} {...user} />);
 };
 
 const ProjectListItem = ({ project, match }) => {
-  const { id, uuid, name, averages, users } = project;
+  const { id, name, users } = project;
   const url = `${match.url}/${id}`;
 
   return (
     <TableRow>
       <TableCell>{id}</TableCell>
       <TableCell>{name}</TableCell>
-      <TableCell>
-        <ScoreWrapper>{projectAverages(averages, uuid)}</ScoreWrapper>
-      </TableCell>
       <TableCell>
         <UserIconsContainer>
           <Toggle>

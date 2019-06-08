@@ -19,25 +19,32 @@ class ProjectList extends Component {
   };
 
   render() {
-    const { projects } = this.props.data;
+    const { loadMore, data } = this.props;
+    const {
+      projects: { rows }
+    } = data;
 
-    const projectItems = projects.map(project => (
+    const projectItems = rows.map(project => (
       <ProjectListItem key={project.uuid} project={project} />
     ));
 
     return (
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>#</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Avg. Scores</TableCell>
-            <TableCell>Users</TableCell>
-            <TableCell />
-          </TableRow>
-        </TableHead>
-        <TableBody>{projectItems}</TableBody>
-      </Table>
+      <>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>#</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Users</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>{projectItems}</TableBody>
+        </Table>
+        <div>
+          <button onClick={loadMore}>Next page</button>
+        </div>
+      </>
     );
   }
 }

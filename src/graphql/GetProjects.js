@@ -1,19 +1,22 @@
 import { gql } from "apollo-boost";
 
 export default gql`
-  query GetProjects {
-    projects: getProjects {
-      id
-      name
-      uuid
-      averages {
+  query GetProjects($input: ProjectsInput!) {
+    projects(input: $input) {
+      rows {
+        createdAt
+        id
         name
-        value
+        users {
+          initials
+          email
+        }
+        uuid
       }
-      users {
-        firstName
-        lastName
-        email
+      pageInfo {
+        hasNextPage
+        total
+        totalPages
       }
     }
   }
