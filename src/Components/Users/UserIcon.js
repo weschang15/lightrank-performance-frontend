@@ -27,15 +27,10 @@ const UserIconWrapper = styled.div`
   }
 `;
 
-const generateInitials = (firstName, lastName) => {
-  const firstInitial = firstName.charAt(0).toUpperCase();
-  const lastInitial = lastName.charAt(0).toUpperCase();
-  return firstInitial + lastInitial;
-};
-
-const UserIcon = ({ firstName, lastName, email }) => {
-  const initials = generateInitials(firstName, lastName);
-  return <UserIconWrapper title={email}>{initials}</UserIconWrapper>;
+const UserIcon = ({ initials, email }) => {
+  return (
+    <UserIconWrapper title={email}>{initials.toUpperCase()}</UserIconWrapper>
+  );
 };
 
 export default UserIcon;

@@ -18,14 +18,37 @@ class ReportsContainer extends Component {
         const newReport = subscriptionData.data.report;
         const updatedQuery = {
           ...prev,
-          reports: [...prev.reports, newReport]
+          reports: {
+            ...prev.reports,
+            rows: [...prev.reports.rows, newReport]
+          }
         };
 
         return updatedQuery;
       }
     });
+
+  loadMore = (fn, projectId, list) => () =>
+    fn({
+      variables: {
+        input: {
+          projectId,
+          after: list[list.length - 1].createdAt
+        }
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return {
+          ...prev,
+          reports: {
+            ...fetchMoreResult.reports
+          }
+        };
+      }
+    });
+
   render() {
-    const { subscribe } = this;
+    const { subscribe, loadMore } = this;
     const {
       match: {
         params: { id }
@@ -33,15 +56,17 @@ class ReportsContainer extends Component {
     } = this.props;
 
     return (
-      <Query query={GET_REPORTS} variables={{ projectId: id }}>
-        {({ data, loading, subscribeToMore }) => {
+      <Query query={GET_REPORTS} variables={{ input: { projectId: id } }}>
+        {({ data, loading, fetchMore, subscribeToMore }) => {
           if (loading) return null;
+          console.log(data);
           return (
             <Container>
               <Header>Recent reports</Header>
               <ReportList
                 data={data}
                 projectId={id}
+                loadMore={loadMore(fetchMore, id, data.reports.rows)}
                 subscribeToMore={subscribe(subscribeToMore, id)}
               />
             </Container>

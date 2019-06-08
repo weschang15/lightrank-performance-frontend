@@ -22,12 +22,12 @@ class ReportList extends Component {
   };
 
   render() {
+    const { data, projectId, loadMore } = this.props;
     const {
-      data: { reports },
-      projectId
-    } = this.props;
+      reports: { rows }
+    } = data;
 
-    const reportItems = reports.map(report => (
+    const reportItems = rows.map(report => (
       <Fragment key={report.uuid}>
         <ReportListItem report={report} />
         <Subscription
@@ -40,18 +40,23 @@ class ReportList extends Component {
     ));
 
     return (
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>#</TableCell>
-            <TableCell>URL</TableCell>
-            <TableCell>Scores</TableCell>
-            <TableCell>Last Updated</TableCell>
-            <CenterCell>Status</CenterCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>{reportItems}</TableBody>
-      </Table>
+      <>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>#</TableCell>
+              <TableCell>URL</TableCell>
+              <TableCell>Scores</TableCell>
+              <TableCell>Last Updated</TableCell>
+              <CenterCell>Status</CenterCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{reportItems}</TableBody>
+        </Table>
+        <div>
+          <button onClick={loadMore}>Next page</button>
+        </div>
+      </>
     );
   }
 }
