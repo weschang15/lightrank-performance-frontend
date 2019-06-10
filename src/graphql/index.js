@@ -11,6 +11,7 @@ export {
   default as PROJECT_ADDED_SUBSCRIPTION
 } from "./ProjectAddedSubscription";
 
+export { default as GET_REPORT_SCORES } from "./GetReportScores";
 export { default as GET_REPORTS } from "./GetReports";
 export { default as CREATE_REPORT } from "./CreateReport";
 export {
