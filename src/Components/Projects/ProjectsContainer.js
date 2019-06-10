@@ -20,7 +20,8 @@ class ProjectsContainer extends Component {
         if (!subscriptionData.data) return prev;
         const newProject = subscriptionData.data.project;
         const updatedQuery = {
-          ...prev,
+          ...prev.projects,
+          ...prev.pageInfo,
           projects: {
             ...prev.projects,
             rows: [...prev.projects.rows, newProject]

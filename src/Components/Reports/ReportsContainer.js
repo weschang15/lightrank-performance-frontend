@@ -17,7 +17,8 @@ class ReportsContainer extends Component {
         if (!subscriptionData.data) return prev;
         const newReport = subscriptionData.data.report;
         const updatedQuery = {
-          ...prev,
+          ...prev.reports,
+          ...prev.pageInfo,
           reports: {
             ...prev.reports,
             rows: [...prev.reports.rows, newReport]
@@ -59,7 +60,6 @@ class ReportsContainer extends Component {
       <Query query={GET_REPORTS} variables={{ input: { projectId: id } }}>
         {({ data, loading, fetchMore, subscribeToMore }) => {
           if (loading) return null;
-          console.log(data);
           return (
             <Container>
               <Header>Recent reports</Header>
