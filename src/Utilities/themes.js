@@ -1,3 +1,36 @@
+export const mainTheme = {
+  colors: {
+    green: "#0EBC34",
+    lightGreen: "#CEF1D5",
+    black: "#212121",
+    darkGray: "#333333",
+    gray: "#D9D9D9",
+    lightGray: "#F7F7F7",
+    white: "#FDFDFD"
+  },
+  buttons: {
+    disabled: {
+      bg: "#c3c3c6",
+      color: "#3e3e48"
+    }
+  },
+  shadows: {
+    primary: "box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);"
+  },
+  curvature: {
+    primary: "5px"
+  },
+  transitions: {
+    speed: {
+      fast: "125ms",
+      slow: "250ms"
+    },
+    easing: {
+      default: "ease-out"
+    }
+  }
+};
+
 export const primaryTheme = {
   colors: {
     pureWhite: "#fff",
