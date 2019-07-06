@@ -21,8 +21,10 @@ class ProjectList extends Component {
   render() {
     const { loadMore, data } = this.props;
     const {
-      projects: { rows }
+      projects: { rows, pageInfo }
     } = data;
+
+    const { hasNextPage } = pageInfo;
 
     const projectItems = rows.map(project => (
       <ProjectListItem key={project.uuid} project={project} />
@@ -41,9 +43,11 @@ class ProjectList extends Component {
           </TableHead>
           <TableBody>{projectItems}</TableBody>
         </Table>
-        <div>
-          <button onClick={loadMore}>Next page</button>
-        </div>
+        {hasNextPage && (
+          <div>
+            <button onClick={loadMore}>Next page</button>
+          </div>
+        )}
       </>
     );
   }
