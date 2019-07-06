@@ -50,24 +50,87 @@ const Home = () => {
             </GridSection>
           </HeroContainer>
         </Hero>
+        <Section>
+          <SectionHeader>
+            <H2>
+              The way site metrics are meant{" "}
+              <Underlined>to be viewed</Underlined>
+            </H2>
+          </SectionHeader>
+          <Grid>
+            <GridSection>
+              <Card>
+                <CardTitle>Performance</CardTitle>
+              </Card>
+              <Card>
+                <CardTitle>SEO</CardTitle>
+              </Card>
+              <Card>
+                <CardTitle>Accessibility</CardTitle>
+              </Card>
+              <Card>
+                <CardTitle>Security</CardTitle>
+              </Card>
+            </GridSection>
+          </Grid>
+        </Section>
       </MainContainer>
     </ThemeProvider>
   );
 };
 
+const Section = styled.section`
+  padding: 2.25em 0;
+`;
+
+const SectionHeader = styled.header`
+  padding: 1em;
+  @media only screen and (min-width: 48em) {
+    width: ${em(columns(4), 18)};
+  }
+
+  @media only screen and (min-width: 64em) {
+    width: ${em(columns(4), 20)};
+  }
+`;
+
+const Underlined = styled.span`
+  background-image: linear-gradient(
+    ${({ theme }) => theme.colors.lightGreen},
+    ${({ theme }) => theme.colors.lightGreen}
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em;
+  background-position: 0 90%;
+`;
+
+const H2 = styled.h2`
+  font-size: 1.75em;
+  margin: 0 0 0.25em;
+  @media only screen and (min-width: 48em) {
+    ${Underlined} {
+      display: inline-block;
+    }
+  }
+`;
+
 const GridSection = styled.div`
   padding: 1em;
+  flex-basis: 100%;
   &:nth-of-type(2) {
     display: none;
   }
 
   @media only screen and (min-width: 30em) {
+    flex-basis: ${em(columns(5, true), 18)};
     width: ${em(columns(5, true), 18)};
   }
 
   @media only screen and (min-width: 48em) {
+    flex-basis: ${em(columns(4), 18)};
     width: ${em(columns(4), 18)};
     &:nth-of-type(2) {
+      flex-basis: ${em(columns(3), 18)};
       width: ${em(columns(3), 18)};
       display: block;
       figure {
@@ -78,11 +141,53 @@ const GridSection = styled.div`
   }
 
   @media only screen and (min-width: 64em) {
+    flex-basis: ${em(columns(4), 20)};
     width: ${em(columns(4), 20)};
     &:nth-of-type(2) {
+      flex-basis: ${em(columns(5), 20)};
       width: ${em(columns(5), 20)};
     }
   }
+`;
+
+const Card = styled.div`
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => theme.shadows.primary}
+  display: flex;
+  justify-content: center;
+  margin: 1em 0;
+  min-height: 4em;
+  padding: 0.5em;
+  position: relative;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.black};
+    transition: ${({ theme }) =>
+      `${theme.transitions.speed.slow} background-color, ${
+        theme.transitions.speed.slow
+      } transform`};
+    width: 100%;
+
+    p:first-of-type {
+      color: ${({ theme }) => theme.colors.green};
+    }
+  }
+
+  @media only screen and (min-width: 30em) {
+    width: ${em(392, 18)};
+  }
+
+  @media only screen and (min-width: 64em) {
+    width: ${em(392, 20)};
+  }
+`;
+
+const CardTitle = styled.p`
+  font-weight: bold;
+  margin: 0;
 `;
 
 const Grid = styled.div`
@@ -93,9 +198,11 @@ const Grid = styled.div`
   }
 `;
 
-const Hero = styled.section`
+const Hero = styled(Section)`
   background: linear-gradient(#fcfcfc, #ededed);
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+  @media only screen and (min-width: 48em) {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+  }
 `;
 
 const HeroContainer = styled(Grid)`
@@ -106,11 +213,14 @@ const HeroContainer = styled(Grid)`
 
 const Title = styled.h1`
   line-height: 1.3
-  font-size: 3.2em;
-  margin: 0.15em 0 0.25em;
+  margin: 0 0 0.25em;
   text-transform: uppercase;
   span {
     color: ${props => props.theme.colors.green};
+  }
+
+  @media only screen and (min-width: 30em) {
+    font-size: 3.2em;
   }
 `;
 
