@@ -23,7 +23,8 @@ export const mainTheme = {
   transitions: {
     speed: {
       fast: "125ms",
-      slow: "250ms"
+      slow: "250ms",
+      slowest: "500ms"
     },
     easing: {
       default: "ease-out"
