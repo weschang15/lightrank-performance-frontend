@@ -4,6 +4,8 @@ export { default as CircleButton } from "./Buttons/CircleButton";
 export { default as CircleIcon } from "./Icons/CircleIcon";
 export { default as Checkbox } from "./Inputs/Checkbox";
 export { default as DangerButton } from "./Buttons/DangerButton";
+export { default as GridColumn } from "./Grid/GridColumn";
+export { default as GridContainer } from "./Grid/GridContainer";
 export { default as PrimaryButton } from "./Buttons/PrimaryButton";
 export { default as StackedForm } from "./Forms/StackedForm";
 export { default as StandardInput } from "./Inputs/StandardInput";

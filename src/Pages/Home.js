@@ -2,8 +2,15 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { darken, em } from "polished";
 import HeroIllustration from "images/hero-illustration.svg";
+import LighthouseImage from "images/lighthouse.png";
 import { mainTheme, columns } from "Utilities";
-import { StackedForm, StandardInput, Button } from "Elements";
+import {
+  StackedForm,
+  StandardInput,
+  Button,
+  GridContainer,
+  GridColumn
+} from "Elements";
 
 const Home = () => {
   const handleChange = e => {};
@@ -53,27 +60,60 @@ const Home = () => {
         <Section>
           <SectionHeader>
             <H2>
-              The way site metrics are meant{" "}
-              <Underlined>to be viewed</Underlined>
+              The easiest way to keep tabs on{" "}
+              <Underlined>your site performance</Underlined>
             </H2>
           </SectionHeader>
-          <Grid>
-            <GridSection>
-              <Card>
-                <CardTitle>Performance</CardTitle>
-              </Card>
-              <Card>
-                <CardTitle>SEO</CardTitle>
-              </Card>
-              <Card>
-                <CardTitle>Accessibility</CardTitle>
-              </Card>
-              <Card>
-                <CardTitle>Security</CardTitle>
-              </Card>
-            </GridSection>
-          </Grid>
+          <GridContainer justifyContenCenter>
+            <CardColumn>
+              <CardTitle>Performance monitoring</CardTitle>
+              <HiddenText>
+                Non-stop performance monitoring for your web application.
+              </HiddenText>
+            </CardColumn>
+            <CardColumn>
+              <CardTitle>High-res reporting</CardTitle>
+              <HiddenText>
+                Understand key performance metrics that directly impact your
+                users' experiences with high-res visual aids.
+              </HiddenText>
+            </CardColumn>
+            <CardColumn>
+              <CardTitle>Uptime monitoring</CardTitle>
+              <HiddenText>
+                We don't want your performance optimizations to go to waste.
+                We'll immediately notify you if your site crashes.
+              </HiddenText>
+            </CardColumn>
+          </GridContainer>
         </Section>
+        <ProductSection>
+          <ProductGrid
+            tabletColumnCount={2}
+            desktopColumnCount={2}
+            justifyContenCenter
+            alignItemsCenter
+          >
+            <ProductSectionImage>
+              <figure>
+                <img src={LighthouseImage} alt="Lighthouse logo" />
+              </figure>
+            </ProductSectionImage>
+            <ProductSectionContent>
+              <H2>
+                Information the way you want it–
+                <Underlined>where you want it</Underlined>
+              </H2>
+              <p>
+                LightRank utilizes{" "}
+                <strong>Google’s website reporting tool (Lighthouse),</strong>{" "}
+                behind the scenes to retrieve detailed information about your
+                application or website without having to open a Chrome tab or
+                dev tools.
+              </p>
+            </ProductSectionContent>
+          </ProductGrid>
+        </ProductSection>
       </MainContainer>
     </ThemeProvider>
   );
@@ -150,7 +190,17 @@ const GridSection = styled.div`
   }
 `;
 
-const Card = styled.div`
+const HalfGrid = styled(GridColumn)`
+  @media only screen and (min-width: 24em) {
+    grid-column: 1/4;
+  }
+
+  @media only screen and (min-width: 48em) {
+    grid-column: 1/5;
+  }
+`;
+
+const CardColumn = styled(HalfGrid)`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.shadows.primary}
@@ -158,36 +208,56 @@ const Card = styled.div`
   justify-content: center;
   margin: 1em 0;
   min-height: 4em;
+  overflow: hidden;
   padding: 0.5em;
   position: relative;
-  width: 100%;
+  transition: ${({ theme }) => `align-items ${theme.transitions.speed.slow}`};
+  will-change: grid-column;
 
   &:hover,
   &:focus {
+    align-items: flex-start;
     background-color: ${({ theme }) => theme.colors.black};
+    flex-direction: column;
     transition: ${({ theme }) =>
-      `${theme.transitions.speed.slow} background-color, ${
-        theme.transitions.speed.slow
-      } transform`};
-    width: 100%;
+      `background-color ${theme.transitions.speed.slow}`};
 
     p:first-of-type {
       color: ${({ theme }) => theme.colors.green};
     }
+
+    p:last-of-type {
+      color: ${({ theme }) => theme.colors.white};
+      display: block;
+      opacity: 1;
+    }
   }
 
-  @media only screen and (min-width: 30em) {
-    width: ${em(392, 18)};
+  @media only screen and (min-width: 24em) {
+    grid-column: 1/4;
+  }
+
+  @media only screen and (min-width: 48em) {
+    grid-column: 1/5;
   }
 
   @media only screen and (min-width: 64em) {
-    width: ${em(392, 20)};
+    &:hover,
+    &:focus {
+      grid-column: 1/6;
+    }
   }
 `;
 
 const CardTitle = styled.p`
   font-weight: bold;
   margin: 0;
+`;
+
+const HiddenText = styled.p`
+  display: none;
+  font-size: 16px;
+  opacity: 0;
 `;
 
 const Grid = styled.div`
@@ -243,7 +313,7 @@ const Label = styled.label`
   font-weight: bold;
   flex-grow: 1;
   transition: ${({ theme }) =>
-    `${theme.transitions.speed.fast} color ${
+    `color ${theme.transitions.speed.fast} ${
       theme.transitions.easing.default
     }`};
   &:focus-within {
@@ -279,5 +349,27 @@ const FormButton = styled(Button)`
     margin: 0.5em;
   }
 `;
+
+// How LightRank works section
+const ProductSection = styled(Section)``;
+
+const ProductGrid = styled.div`
+  display: grid;
+  margin: 1em;
+  @media only screen and (min-width: 48em) {
+    align-items: center;
+    grid-columng-gap: 2em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const ProductSectionImage = styled.div`
+  max-width: 384px;
+  @media only screen and (min-width: 48em) {
+    max-width: none;
+  }
+`;
+
+const ProductSectionContent = styled.div``;
 
 export default Home;
