@@ -37,6 +37,14 @@ p {
   margin: 0 0 1em;
 }
 
+figure {
+  margin: 1.25em 0;
+}
+
+img {
+  max-width: 100%;
+}
+
 @media only screen and (min-width: 30em) {
   html {
     font-size: 112.5%;
