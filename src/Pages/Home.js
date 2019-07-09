@@ -9,7 +9,8 @@ import {
   StandardInput,
   Button,
   GridContainer,
-  GridColumn
+  GridColumn,
+  Wrapper
 } from "Elements";
 
 const Home = () => {
@@ -58,13 +59,13 @@ const Home = () => {
           </HeroContainer>
         </Hero>
         <Section>
-          <SectionHeader>
-            <H2>
-              The easiest way to keep tabs on{" "}
-              <Underlined>your site performance</Underlined>
-            </H2>
-          </SectionHeader>
           <GridContainer justifyContenCenter>
+            <SectionHeader>
+              <H2>
+                The easiest way to keep tabs on{" "}
+                <Underlined>your site performance</Underlined>
+              </H2>
+            </SectionHeader>
             <CardColumn>
               <CardTitle>Performance monitoring</CardTitle>
               <HiddenText>
@@ -124,13 +125,9 @@ const Section = styled.section`
 `;
 
 const SectionHeader = styled.header`
-  padding: 1em;
-  @media only screen and (min-width: 48em) {
-    width: ${em(columns(4), 18)};
-  }
-
-  @media only screen and (min-width: 64em) {
-    width: ${em(columns(4), 20)};
+  grid-column: 1/-1;
+  @media only screen and (min-width: 24em) {
+    grid-column: span 6;
   }
 `;
 
@@ -146,7 +143,7 @@ const Underlined = styled.span`
 
 const H2 = styled.h2`
   font-size: 1.75em;
-  margin: 0 0 0.25em;
+  margin: 0 0 1em;
   @media only screen and (min-width: 48em) {
     ${Underlined} {
       display: inline-block;
@@ -190,17 +187,7 @@ const GridSection = styled.div`
   }
 `;
 
-const HalfGrid = styled(GridColumn)`
-  @media only screen and (min-width: 24em) {
-    grid-column: 1/4;
-  }
-
-  @media only screen and (min-width: 48em) {
-    grid-column: 1/5;
-  }
-`;
-
-const CardColumn = styled(HalfGrid)`
+const CardColumn = styled(GridColumn)`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.shadows.primary}
@@ -233,11 +220,7 @@ const CardColumn = styled(HalfGrid)`
     }
   }
 
-  @media only screen and (min-width: 24em) {
-    grid-column: 1/4;
-  }
-
-  @media only screen and (min-width: 48em) {
+  @media only screen and (min-width: 40em) {
     grid-column: 1/5;
   }
 
@@ -358,8 +341,9 @@ const ProductGrid = styled.div`
   margin: 1em;
   @media only screen and (min-width: 48em) {
     align-items: center;
-    grid-columng-gap: 2em;
-    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2em;
+    grid-template-columns: repeat(2, minmax(auto, 680px));
+    justify-content: center;
   }
 `;
 

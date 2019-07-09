@@ -29,7 +29,7 @@ const GridContainer = styled.div`
   @media only screen and (min-width: 64em) {
     grid-template-columns: repeat(
       ${({ desktopColumnCount }) => desktopColumnCount},
-      1fr
+      ${({ maxColumnWidth }) => `minmax(auto, ${maxColumnWidth})`}
     );
   }
 `;
@@ -38,6 +38,7 @@ GridContainer.propTypes = {
   alignItemsCenter: PropTypes.bool,
   desktopColumnCount: PropTypes.number.isRequired,
   justifyContentCenter: PropTypes.bool,
+  maxColumnWidth: PropTypes.string,
   minColumCount: PropTypes.number.isRequired,
   mobileColumCount: PropTypes.number.isRequired,
   tabletColumnCount: PropTypes.number.isRequired
@@ -45,6 +46,8 @@ GridContainer.propTypes = {
 
 GridContainer.defaultProps = {
   desktopColumnCount: 10,
+  justifyContentCenter: true,
+  maxColumnWidth: "104px",
   minColumCount: 4,
   mobileColumCount: 6,
   tabletColumnCount: 8
